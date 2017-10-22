@@ -26,14 +26,14 @@ install_pkgs()
 
 setup_shares()
 {
-    
+    mkdir -p $SHARE_HOME
     mkdir -p $SHARE_DATA
-
+    
    
-        
+        echo "$MASTER_HOSTNAME:$SHARE_HOME $SHARE_HOME    nfs4    rw,auto,_netdev 0 0" >> /etc/fstab
         echo "$MASTER_HOSTNAME:$SHARE_DATA $SHARE_DATA    nfs4    rw,auto,_netdev 0 0" >> /etc/fstab
         mount -a
-        
+        mount | grep "^$MASTER_HOSTNAME:$SHARE_HOME"
         mount | grep "^$MASTER_HOSTNAME:$SHARE_DATA"
 
 }
