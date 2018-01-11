@@ -28,6 +28,7 @@ setup_shares()
 {
     mkdir -p $SHARE_HOME
     mkdir -p $SHARE_DATA
+    mkdir -p $SHARE_DATA2
 
    
         echo "$MASTER_HOSTNAME:$SHARE_HOME $SHARE_HOME    nfs4    rw,auto,_netdev 0 0" >> /etc/fstab
@@ -36,7 +37,7 @@ setup_shares()
         mount -a
         mount | grep "^$MASTER_HOSTNAME:$SHARE_HOME"
         mount | grep "^$MASTER_HOSTNAME:$SHARE_DATA"
-        
+        mount | grep "^$MASTER_HOSTNAME:$SHARE_DATA2"
 
 }
 
