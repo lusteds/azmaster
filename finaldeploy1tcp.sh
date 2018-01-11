@@ -4,8 +4,8 @@ MASTER_HOSTNAME=$1
 
 # Shares
 SHARE_HOME=/share/home
-# SHARE_DATA=/share/data
-SHARE_DATA=/mnt/resource/
+SHARE_DATA2=/share/data
+SHARE_DATA=/mnt/resource
 
 
 # Hpc User
@@ -32,9 +32,11 @@ setup_shares()
    
         echo "$MASTER_HOSTNAME:$SHARE_HOME $SHARE_HOME    nfs4    rw,auto,_netdev 0 0" >> /etc/fstab
         echo "$MASTER_HOSTNAME:$SHARE_DATA $SHARE_DATA    nfs4    rw,auto,_netdev 0 0" >> /etc/fstab
+        echo "$MASTER_HOSTNAME:$SHARE_DATA2 $SHARE_DATA2    nfs    rw,auto,_netdev 0 0" >> /etc/fstab
         mount -a
         mount | grep "^$MASTER_HOSTNAME:$SHARE_HOME"
         mount | grep "^$MASTER_HOSTNAME:$SHARE_DATA"
+        
 
 }
 
