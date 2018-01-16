@@ -19,7 +19,7 @@ HPC_GID=7007
 #
 install_pkgs()
 {
-    pkgs="libXt libXext zlib zlib-devel bzip2 bzip2-devel bzip2-libs openssl openssl-devel openssl-libs gcc gcc-c++ nfs-utils rpcbind mdadm wget libtool libxml2-devel boost-devel"
+    pkgs="libXt libXext zlib zlib-devel bzip2 bzip2-devel bzip2-libs openssl openssl-devel openssl-libs gcc gcc-c++ nfs-utils rpcbind mdadm wget libtool libxml2-devel boost-devel htop nload"
     yum -y install $pkgs
 }
 
