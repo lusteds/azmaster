@@ -77,15 +77,13 @@ setup_env()
 
 setup_torque()
 {
-    su hpc
-    cp -rp /share/home/hpc/torque/torque-6.0.2-1469811694_d9a3483 /tmp/.
-    exit
+    cp -rp /share/data/torque/torque-6.0.2-1469811694_d9a3483 /tmp/.
     cd /tmp/torque-6.0.2-1469811694_d9a3483
     ./configure
     make
     make install
-    yes | cp /share/home/hpc/torque/server_name  /var/spool/torque/
-    cp /share/home/hpc/torque/config /var/spool/torque/mom_priv/
+    yes | cp /share/data/torque/server_name  /var/spool/torque/
+    cp /share/data/torque/config /var/spool/torque/mom_priv/
       
 }
 
