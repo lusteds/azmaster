@@ -77,7 +77,9 @@ setup_env()
 
 setup_torque()
 {
+    su hpc
     cp -rp /share/home/hpc/torque/torque-6.0.2-1469811694_d9a3483 /tmp/.
+    exit
     cd /tmp/torque-6.0.2-1469811694_d9a3483
     ./configure
     make
