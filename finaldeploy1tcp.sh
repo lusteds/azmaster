@@ -5,7 +5,7 @@ MASTER_HOSTNAME=$1
 # Shares
 SHARE_HOME=/share/home
 SHARE_DATA2=/share/data
-SHARE_DATA=/mnt/resource
+##SHARE_DATA=/mnt/resource
 
 
 # Hpc User
@@ -27,16 +27,16 @@ install_pkgs()
 setup_shares()
 {
     mkdir -p $SHARE_HOME
-    mkdir -p $SHARE_DATA
+    ##mkdir -p $SHARE_DATA
     mkdir -p $SHARE_DATA2
 
    
         echo "$MASTER_HOSTNAME:$SHARE_HOME $SHARE_HOME    nfs4    rw,auto,_netdev 0 0" >> /etc/fstab
-        echo "$MASTER_HOSTNAME:$SHARE_DATA $SHARE_DATA    nfs4    rw,auto,_netdev 0 0" >> /etc/fstab
+        ###echo "$MASTER_HOSTNAME:$SHARE_DATA $SHARE_DATA    nfs4    rw,auto,_netdev 0 0" >> /etc/fstab
         echo "$MASTER_HOSTNAME:$SHARE_DATA2 $SHARE_DATA2    nfs    rw,auto,_netdev 0 0" >> /etc/fstab
         mount -a
         mount | grep "^$MASTER_HOSTNAME:$SHARE_HOME"
-        mount | grep "^$MASTER_HOSTNAME:$SHARE_DATA"
+        ###mount | grep "^$MASTER_HOSTNAME:$SHARE_DATA"
         mount | grep "^$MASTER_HOSTNAME:$SHARE_DATA2"
 
 }
@@ -77,13 +77,13 @@ setup_env()
 
 setup_torque()
 {
-    cp -rp /mnt/resource/torque/torque-6.0.2-1469811694_d9a3483 ~
+    cp -rp /share/home/hpc/torque/torque-6.0.2-1469811694_d9a3483 ~
     cd ~/torque-6.0.2-1469811694_d9a3483
     ./configure
     make
     make install
-    yes | cp /mnt/resource/torque/server_name  /var/spool/torque/
-    cp /mnt/resource/torque/config /var/spool/torque/mom_priv/
+    yes | cp /share/home/hpc/torque/server_name  /var/spool/torque/
+    cp /share/home/hpc/torque/config /var/spool/torque/mom_priv/
       
 }
 
