@@ -4,8 +4,8 @@ MASTER_HOSTNAME=$1
 
 # Shares
 SHARE_HOME=/share/home
-# SHARE_DATA=/share/data
-SHARE_DATA=/mnt/resource/
+SHARE_DATA2=/share/data
+#SHARE_DATA=/mnt/resource/
 
 
 # Hpc User
@@ -27,14 +27,14 @@ install_pkgs()
 setup_shares()
 {
     mkdir -p $SHARE_HOME
-    mkdir -p $SHARE_DATA
+    mkdir -p $SHARE_DATA2
     
    
         echo "$MASTER_HOSTNAME:$SHARE_HOME $SHARE_HOME    nfs4    rw,auto,_netdev 0 0" >> /etc/fstab
-        echo "$MASTER_HOSTNAME:$SHARE_DATA $SHARE_DATA    nfs4    rw,auto,_netdev 0 0" >> /etc/fstab
+        echo "$MASTER_HOSTNAME:$SHARE_DATA $SHARE_DATA2    nfs    rw,auto,_netdev 0 0" >> /etc/fstab
         mount -a
         mount | grep "^$MASTER_HOSTNAME:$SHARE_HOME"
-        mount | grep "^$MASTER_HOSTNAME:$SHARE_DATA"
+        mount | grep "^$MASTER_HOSTNAME:$SHARE_DATA2"
 
 }
 
@@ -70,23 +70,23 @@ setup_env()
     echo "$HPC_USER soft memlock unlimited" >> /etc/security/limits.conf
 
     # Intel MPI config for IB
-    echo "# IB Config for MPI" > /etc/profile.d/hpc.sh
-    echo "export I_MPI_FABRICS=shm:dapl" >> /etc/profile.d/hpc.sh
-    echo "export I_MPI_DAPL_PROVIDER=ofa-v2-ib0" >> /etc/profile.d/hpc.sh
-    echo "export I_MPI_DYNAMIC_CONNECTION=0" >> /etc/profile.d/hpc.sh
+    #echo "# IB Config for MPI" > /etc/profile.d/hpc.sh
+    #echo "export I_MPI_FABRICS=shm:dapl" >> /etc/profile.d/hpc.sh
+    #echo "export I_MPI_DAPL_PROVIDER=ofa-v2-ib0" >> /etc/profile.d/hpc.sh
+    #echo "export I_MPI_DYNAMIC_CONNECTION=0" >> /etc/profile.d/hpc.sh
 	echo "source /opt/intel/compilers_and_libraries_2017.2.174/linux/mpi/bin64/mpivars.sh" >> /etc/profile.d/hpc.sh
     
 }
 
 setup_torque()
 {
-    cp -rp /mnt/resource/torque/torque-6.0.2-1469811694_d9a3483 ~
-    cd ~/torque-6.0.2-1469811694_d9a3483
+    cp -rp /share/data/torque/torque-6.0.2-1469811694_d9a3483 /tmp/.
+    cd /tmp/torque-6.0.2-1469811694_d9a3483
     ./configure
     make
     make install
-    yes | cp /mnt/resource/torque/server_name  /var/spool/torque/
-    cp /mnt/resource/torque/config /var/spool/torque/mom_priv/
+    yes | cp /share/data/torque/server_name  /var/spool/torque/
+    cp /share/data/torque/config /var/spool/torque/mom_priv/
       
 }
 
