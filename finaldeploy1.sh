@@ -71,10 +71,10 @@ setup_env()
 
     # Intel MPI config for IB
     #echo "# IB Config for MPI" > /etc/profile.d/hpc.sh
-    #echo "export I_MPI_FABRICS=shm:dapl" >> /etc/profile.d/hpc.sh
-    #echo "export I_MPI_DAPL_PROVIDER=ofa-v2-ib0" >> /etc/profile.d/hpc.sh
-    #echo "export I_MPI_DYNAMIC_CONNECTION=0" >> /etc/profile.d/hpc.sh
-	echo "source /opt/intel/compilers_and_libraries/linux/mpi/bin64/mpivars.sh" >> /etc/profile.d/hpc.sh
+    echo "export I_MPI_FABRICS=shm:dapl" >> /etc/profile.d/hpc.sh
+    echo "export I_MPI_DAPL_PROVIDER=ofa-v2-ib0" >> /etc/profile.d/hpc.sh
+    echo "export I_MPI_DYNAMIC_CONNECTION=0" >> /etc/profile.d/hpc.sh
+    echo "source /opt/intel/compilers_and_libraries/linux/mpi/bin64/mpivars.sh" >> /etc/profile.d/hpc.sh
     
 }
 
