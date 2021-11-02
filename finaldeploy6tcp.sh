@@ -28,7 +28,7 @@ setup_shares()
 {
     mkdir -p $SHARE_HOME
     mkdir -p $SHARE_DATA2
-    chomd 777 $SHARE_HOME
+    chmod 777 $SHARE_HOME
     chmod 777 $SHARE_DATA2
    
         echo "$MASTER_HOSTNAME:/home/hpc $SHARE_HOME    nfs    rw,auto,_netdev 0 0" >> /etc/fstab
