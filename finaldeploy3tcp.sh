@@ -57,7 +57,7 @@ setup_hpc_user()
     sed -i 's/^Defaults[ ]*requiretty/# Defaults requiretty/g' /etc/sudoers
 
     
-    useradd -c "HPC User" -g $HPC_GROUP -s /bin/bash -u $HPC_UID $HPC_USER
+    #useradd -c "HPC User" -g $HPC_GROUP -s /bin/bash -u $HPC_UID $HPC_USER
     
 }
 
