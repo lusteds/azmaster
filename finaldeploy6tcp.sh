@@ -74,7 +74,7 @@ setup_env()
 
 setup_torque()
 {
-    cp -rp /share/data/torque/torque-6.0.2-1469811694_d9a3483_configured /tmp/.
+    cp -rp /datadrive/torque/torque-6.0.2-1469811694_d9a3483_configured /tmp/.
     #cp -rp /datadrive/torque/torque-6.0.2-1469811694_d9a3483_configured /home/hpc/.
     cd /tmp/torque-6.0.2-1469811694_d9a3483_configured
     make install
