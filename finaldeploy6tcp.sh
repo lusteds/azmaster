@@ -31,7 +31,7 @@ setup_shares()
     chmod 777 $SHARE_HOME
     chmod 777 $SHARE_DATA2
    
-        echo "$MASTER_HOSTNAME:/home/hpc $SHARE_HOME    nfs    rw,auto,_netdev 0 0" >> /etc/fstab
+        echo "$MASTER_HOSTNAME:/home/hpc $SHARE_HOME    nfs4    rw,auto,_netdev 0 0" >> /etc/fstab
         echo "$MASTER_HOSTNAME:$SHARE_DATA2 $SHARE_DATA2    nfs    rw,auto,_netdev 0 0" >> /etc/fstab
         mount -a
         mount | grep "^$MASTER_HOSTNAME:$SHARE_HOME"
