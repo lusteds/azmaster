@@ -60,8 +60,7 @@ setup_hpc_user()
     #useradd -c "HPC User" -g $HPC_GROUP -s /bin/bash -u $HPC_UID $HPC_USER
     
     cat /datadrive/scripts/id_rsa.pub >> /home/hpc/.ssh/authorized_keys
-    cp -p /datadrive/scripts/config /home/hpc/.ssh/.
-    cp -p /datadrive/scripts/id_rsa* /home/hpc/.ssh/.
+
 }
 
 # Sets all common environment variables and system parameters.
