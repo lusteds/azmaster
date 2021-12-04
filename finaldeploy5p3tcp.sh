@@ -70,7 +70,8 @@ setup_env()
     # Set unlimited mem lock
     echo "$HPC_USER hard memlock unlimited" >> /etc/security/limits.conf
     echo "$HPC_USER soft memlock unlimited" >> /etc/security/limits.conf
-    
+    echo 1 >/proc/sys/vm/zone_reclaim_mode
+    systemctl disable cpupower
 }
 
 setup_torque()
